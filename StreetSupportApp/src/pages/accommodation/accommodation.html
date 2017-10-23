@@ -1,0 +1,29 @@
+<ion-header (didChangeLocation)="locationChanged($event)"></ion-header>
+<ion-content class="help-category">
+  <div class="header-block header-block--centered">
+    <h1>Accommodation</h1>
+    <h2>Filter</h2>
+    Suitable for:
+    <table class="header-block--centered">
+      <tr><td>Men</td><td><show-bool switch=true></show-bool></td></tr>
+      <tr><td>Women</td><td><show-bool switch=true></show-bool></td></tr>
+      <tr><td>Couples</td><td><show-bool switch=true></show-bool></td></tr>
+      <tr><td>Same-Sex Couples</td><td><show-bool switch=true></show-bool></td></tr>
+      <tr><td>Families</td><td><show-bool switch=true></show-bool></td></tr>
+      <tr><td>Young People</td><td><show-bool switch=true></show-bool></td></tr>
+      <tr><td>Benefits Claimants</td><td><show-bool switch=true></show-bool></td></tr>
+    </table>
+    <a (click)="updateFiltersTapped($event)">Update Filters</a>
+    <p>Showing results within 10km of <a (click)="useMyLocationTapped($event)"><strong>{{locationSearch ? "your location" : city.name}}</strong></a></p>
+  </div>
+  <ion-list>
+    <ng-container *ngFor="let item of items">
+    <ion-item class="category__item" (click)="itemTapped(item)">
+      <h3 [innerHTML]="item.name"></h3>
+      <p *ngIf="item.referralIsRequired">A referral is required for this property</p>
+      <p [innerHTML]="item.synopsis"></p>
+      <ion-icon name="arrow-forward" item-right></ion-icon>
+    </ion-item>
+    </ng-container>
+  </ion-list>
+</ion-content>

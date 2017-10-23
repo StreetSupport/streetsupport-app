@@ -7,6 +7,7 @@ import {LocationProvider} from "./location-provider";
 export class ContentProvider {
 
   cities: any;
+  aFilters: any[];
 
   constructor(
     public api: ApiProvider,
@@ -36,7 +37,7 @@ export class ContentProvider {
       })
       .catch(error => {
         return this.findServicesByCity('services', category, cityId, 10000).then(data => {
-          return {
+          return {              
             locationEnabled: false,
             services: data
           };
@@ -50,6 +51,36 @@ export class ContentProvider {
         };
       });
     }
+  }
+  
+  findAccommodationServices(category: string, cityId: string, useLocation: boolean, filters: any[]): any {
+    if (useLocation == true) {
+      return this.findAccommodationByLocation(filters).then(data => {
+        return {
+          locationEnabled: true,
+          services: data
+        };
+      })
+      .catch(error => {
+        return this.findAccommodationByCity(cityId, filters).then(data => {
+          return {
+            locationEnabled: false,
+            services: data
+          };
+        });
+      });
+    } else {
+      return this.findAccommodationByCity(cityId, filters).then(data => {
+        return {
+          locationEnabled: false,
+          services: data
+        };
+      });
+    }
+  }
+    
+  findAccommodationDetails(accommodationId:string) : any{
+    return this.api.call(`/v1/accommodation/${accommodationId}`);
   }
 
   findTimetabledServices(category: string, cityId: string, useLocation: boolean): any {
@@ -92,6 +123,26 @@ export class ContentProvider {
     return this.api.call(`/v2/service-providers/show/${slug}`);
   }
 
+  private findAccommodationByCity(cityId, aFilters) {
+      let url = `/v1/accommodation/?cityid=${cityId}`;
+      aFilters.forEach(function(aFilter){
+          url += `&${aFilter.name}=${aFilter.value}`;
+        })
+      return this.api.call(url);
+    }
+  
+  private findAccommodationByLocation(aFilters) {
+    return this.locationProvider.getUserLocation().then((location: any) => {
+      let url = `/v1/accommodation/?latitude=${location.latitude}&longitude=${location.longitude}`;
+      aFilters.forEach(function(name,value){
+        console.log([name,value]);
+          url += `&${name}=${value}`;
+        });
+        console.log(url);
+      return this.api.call(url);
+    });
+  }
+  
   private findServicesByCity(type, category, cityId, range) {
     return this.api.call(`/v1/cities/${cityId}/${type}/${category}?range=${range}`);
   }

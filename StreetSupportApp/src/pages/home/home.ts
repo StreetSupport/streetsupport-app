@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 import {NavController} from 'ionic-angular';
 import {EmergencyPage} from '../emergency/emergency';
+import {AccommodationPage} from '../accommodation/accommodation';
 
 
 @Component({
@@ -22,6 +23,10 @@ export class HomePage {
 
   emergencyItemTapped() {
     this.nav.push(EmergencyPage);
+  }
+  
+  accommodationItemTapped() {
+    this.nav.push(AccommodationPage);
   }
 
   servicesItemTapped() {

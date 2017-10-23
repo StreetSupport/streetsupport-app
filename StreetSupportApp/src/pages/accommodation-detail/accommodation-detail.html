@@ -1,0 +1,64 @@
+<ion-header></ion-header>
+<ion-content class="timetable-category-detail">
+  <div class="header-block">
+    <h1 class="header-block__heading" [innerHTML]="info.name"></h1>
+    <p [innerHTML]="info.synopsis"></p>
+  </div>
+  <div class="content-block">
+    <h2 *ngIf="!address.addressIsPubliclyHidden">Location</h2>
+    <p *ngIf="!address.addressIsPubliclyHidden">
+      <span *ngIf="address.street1" [innerHTML]="address.street1">, </span>
+      <span *ngIf="address.street2" [innerHTML]="address.street2">, </span>
+      <span *ngIf="address.street3" [innerHTML]="address.street3">, </span>
+      <span *ngIf="address.city" [innerHTML]="address.city">, </span>
+      <span *ngIf="address.postcode" [innerHTML]="address.postcode"></span>
+    </p>
+    <p *ngIf="contact.email">E-mail: <a [href]="'mailto:'+contact.email" [innerHTML]="contact.email"></a></p>
+    <p *ngIf="contact.telephone">Tel: <a [href]="'tel:'+contact.telephone" [innerHTML]="contact.telephone"></a></p>
+    <p>&nbsp;</p>
+    <p [innerHTML]="info.description"></p>
+    <p>&nbsp;</p>
+    <h2>Price and Requirements</h2>
+    <p *ngIf="requirements.referralIsRequired"><strong>A referral is required for this property</strong></p>
+    <p [innerHTML]="requirements.referralNotes"></p>
+    <p *ngIf="requirements.price > 0">Price from: <span [innerHTML]="'&pound;'+requirements.price"></span> per week</p>
+    <p>&nbsp;</p>
+    <h2 *ngIf="requirements.availabilityOfMeals">Meals Availability</h2>
+    <p [innerHTML]="requirements.availabilityOfMeals"></p>
+    <p *ngIf="requirements.availabilityOfMeals">&nbsp;</p>
+    <h2>Property Features</h2>
+    <table>
+      <tr><td>Accepts Housing Benefit</td><td><show-bool [bool]="features.acceptsHousingBenefit"></show-bool></td></tr>
+      <tr><td>Accepts No Housing Benefit</td><td><show-bool [bool]="features.acceptsNoHousingBenefitWithServiceProviderSupport"></show-bool></td></tr>
+      <tr><td>Accepts Pets</td><td><show-bool [bool]="features.acceptsPets"></show-bool></td></tr>
+      <tr><td>Accepts Couples</td><td><show-bool [bool]="features.acceptsCouples"></show-bool></td></tr>
+      <tr><td>Disabled Access</td><td><show-bool [bool]="features.hasDisabledAccess"></show-bool></td></tr>
+      <tr><td>Suitable for Women</td><td><show-bool [bool]="features.isSuitableForWomen"></show-bool></td></tr>
+      <tr><td>Suitable for Young People</td><td><show-bool [bool]="features.isSuitableForYoungPeople"></show-bool></td></tr>
+      <tr><td>Single Rooms</td><td><show-bool [bool]="features.hasSingleRooms"></show-bool></td></tr>
+      <tr><td>Shared Rooms</td><td><show-bool [bool]="features.hasSharedRooms"></show-bool></td></tr>
+      <tr><td>Shower/Bath</td><td><show-bool [bool]="features.hasShowerBathroomFacilities"></show-bool></td></tr>
+      <tr><td>Laundry Facilities</td><td><show-bool [bool]="features.hasLaundryFacilities"></show-bool></td></tr>
+      <tr><td>Kitchen Access</td><td><show-bool [bool]="features.hasAccessToKitchen"></show-bool></td></tr>
+      <tr><td>Flexible Meal Times</td><td><show-bool [bool]="features.hasFlexibleMealTimes"></show-bool></td></tr>
+      <tr><td>Lounge</td><td><show-bool [bool]="features.hasLounge"></show-bool></td></tr>
+      <tr><td>Clean Bedding Provided</td><td><show-bool [bool]="features.providesCleanBedding"></show-bool></td></tr>
+      <tr><td>Allows Visitors</td><td><show-bool [bool]="features.allowsVisitors"></show-bool></td></tr>
+      <tr><td>Allows Children</td><td><show-bool [bool]="features.allowsChildren"></show-bool></td></tr>
+      <tr><td>On-site manager</td><td><show-bool [bool]="features.hasOnSiteManager"></show-bool></td></tr>
+      <tr><td>Requires Referral</td><td><show-bool [bool]="features.referenceReferralIsRequired"></show-bool></td></tr>
+      <tr><td>Includes Food</td><td><show-bool [bool]="features.foodIsIncluded"></show-bool></td></tr>
+      </table>
+    <p>&nbsp;</p>
+    <h2>Support Provided</h2>
+    <p [innerHTML]="support.supportInfo"></p>
+    <ul>
+      <ng-container *ngFor="let supportItem of support.supportOffered">
+      <li [innerHTML]="supportItem"></li>
+      </ng-container>
+    </ul>
+  </div>
+  <div class="cta-block">
+    <button ion-button (click)="organisationButtonTapped(info)">More about the organisation</button>
+  </div>
+</ion-content>
