@@ -25,12 +25,10 @@ sudo docker build -t streetsupport/app .
 You will need to go to https://github.com/settings/keys and enter the SSH key (the "jibberish" in the terminal starting with ssh-rsa). Then build again. The key generation result has been cached as long as the Dockerfile doesn't change up to that point
 ```sh
 sudo docker build -t streetsupport/app .
-sudo docker run -v ~/:/host -it --rm streetsupport/app sh
 ```
 In the docker image, we move the files to the host so we can update them more easily:
 ```sh
-mv /streetsupport-app /host/streetsupport-app
-exit
+sudo docker run -v ~/:/host streetsupport/app mv /streetsupport-app /host/streetsupport-app
 ```
 Back on the host, we allow the user to access the files, and remap streetsupport-app to use the files on the host:
 ```sh
