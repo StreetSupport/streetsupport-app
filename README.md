@@ -13,10 +13,11 @@ You can now choose between Docker and Native development. Docker should be nice 
 #### Docker
 
 You will need to download the Dockerfile. Currently, this guide is written for ubuntu as that is what I have to hand. All references to ~ map to my home directory. This is where I placed the downloaded dockerfile. I think this works on a mac (?) and maps to C:/users on windows (?) 
-
+```sh
+wget https://raw.githubusercontent.com/rml1997/streetsupport-app/patch-1/Dockerfile
+```
 Install docker and build the image, including ssh key generation:
 ```sh
-cd ~
 sudo apt update
 sudo apt install -y docker.io
 sudo docker build -t StreetSupport/app .
@@ -34,7 +35,7 @@ exit
 Back on the host, we allow the user to access the files, and remap streetsupport-app to use the files on the host:
 ```sh
 sudo chmod -R 777 streetsupport-app/
-sudo docker run -p 8100:8100 -p 35729:35729 -p 53703:53703 -d -v ~/streetsupport-app:/streetsupport-app StreetSupport/app
+sudo docker run -p 8100:8100 -p 35729:35729 -p 53703:53703 -d --name streetsupportapp -v ~/streetsupport-app:/streetsupport-app StreetSupport/app
 ```
 After a few seconds to load, you should be able to access the app using http://localhost:8100
 If you edit the files in ~/streetsupport-app with the changes instantly reflected in the browser!
