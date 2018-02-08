@@ -38,12 +38,6 @@ sudo docker run -p 8100:8100 -p 35729:35729 -p 53703:53703 -d --name streetsuppo
 After a few seconds to load, you should be able to access the app using http://localhost:8100
 If you edit the files in ~/streetsupport-app with the changes instantly reflected in the browser!
 
-You can use the other ionic commands below using docker, e.g. :
-```sh
-sudo docker attach streetsupport/app 
-ionic cordova platform add android
-```
-
 #### Native
 
 There are some issues with versioning with node and npm on certain platforms. If you are uncertain and in a rush, I recommend trying the Docker instructions above.
