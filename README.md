@@ -23,11 +23,11 @@ curl https://raw.githubusercontent.com/rml1997/streetsupport-app/patch-1/Dockerf
 Linux only:
 ```sh
 sudo su
+apt update
+apt install -y docker.io
 ```
 Install docker and build the image, including ssh key generation:
 ```sh
-apt update
-apt install -y docker.io
 docker build -t streetsupport/app .
 ```
 You will need to go to https://github.com/settings/keys and enter the SSH key (the "jibberish" in the terminal starting with ssh-rsa). Then build again. The key generation result has been cached as long as the Dockerfile doesn't change up to that point
