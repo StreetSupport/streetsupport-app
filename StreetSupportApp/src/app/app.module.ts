@@ -11,12 +11,12 @@ import { ContentProvider } from '../providers/content-provider';
 
 import { AboutPage } from '../pages/about/about';
 import { ContentPage } from '../pages/default-content/default-content';
-import { AccomodationPage } from '../pages/accomodation/accomodation';
 import { EmergencyPage } from '../pages/emergency/emergency';
-import { EmergencyDetailPage } from '../pages/emergency-detail/emergency-detail';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import { FindHelpPage } from '../pages/find-help/find-help';
+import { AccommodationPage } from '../pages/accommodation/accommodation';
+import { AccommodationDetailPage } from '../pages/accommodation-detail/accommodation-detail';
 import { HelpCategoryPage } from '../pages/help-category/help-category';
 import { HelpCategoryDetailPage } from '../pages/help-category-detail/help-category-detail';
 import { OrganisationPage } from '../pages/organisation/organisation';
@@ -26,6 +26,7 @@ import { TimetabledCategoryPage } from '../pages/timetabled-category/timetabled-
 import { TimetabledCategoryDetailPage } from '../pages/timetabled-category-detail/timetabled-category-detail';
 
 import { HeaderComponent } from '../components/header/header';
+import { ShowBoolComponent } from '../components/show-bool/show-bool';
 
 import { SortByOrder } from '../pipes/sort-by-order';
 import { SortByAlpha } from '../pipes/sort-by-alpha';
@@ -44,12 +45,12 @@ import { StatusBar } from '@ionic-native/status-bar';
     MyApp,
     AboutPage,
     HomePage,
-    AccomodationPage,
     TabsPage,
     ContentPage,
     EmergencyPage,
-    EmergencyDetailPage,
     FindHelpPage,
+    AccommodationPage,
+    AccommodationDetailPage,
     HelpCategoryPage,
     HelpCategoryDetailPage,
     OrganisationPage,
@@ -58,6 +59,7 @@ import { StatusBar } from '@ionic-native/status-bar';
     TimetabledCategoryPage,
     TimetabledCategoryDetailPage,
     HeaderComponent,
+    ShowBoolComponent,
     SortByOrder,
     SortByAlpha,
     SortByDay,
@@ -73,13 +75,13 @@ import { StatusBar } from '@ionic-native/status-bar';
   entryComponents: [
     MyApp,
     AboutPage,
-    AccomodationPage,
     HomePage,
     TabsPage,
     ContentPage,
     EmergencyPage,
-    EmergencyDetailPage,
     FindHelpPage,
+    AccommodationPage,
+    AccommodationDetailPage,
     HelpCategoryPage,
     HelpCategoryDetailPage,
     OrganisationPage,

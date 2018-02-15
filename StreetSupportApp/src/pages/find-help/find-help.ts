@@ -3,7 +3,6 @@ import {NavController, Loading, LoadingController} from 'ionic-angular';
 import {ContentProvider} from '../../providers/content-provider';
 import {HelpCategoryPage} from '../help-category/help-category';
 import {TimetabledCategoryPage} from '../timetabled-category/timetabled-category';
-import {AccomodationPage} from '../accomodation/accomodation';
 
 
 @Component({
@@ -27,12 +26,6 @@ export class FindHelpPage {
   }
 
   itemTapped(event, category) {
-
-    if (category.key === 'accom') {
-      this.nav.push(AccomodationPage);
-      return;
-    }
-
     if (category.key === 'dropin' || category.key === 'meals') {
       this.nav.push(TimetabledCategoryPage, { category: category.key });
       return;
