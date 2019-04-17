@@ -41,6 +41,8 @@ import { SortByOrder } from '../pipes/sort-by-order';
 import { SortByAlpha } from '../pipes/sort-by-alpha';
 import { SortByDay } from '../pipes/sort-by-day';
 import { SortByOpeningTime } from '../pipes/sort-by-opening-time';
+import { SortBySortPosition } from '../pipes/sort-by-sort-position';
+import { FilterByClientGroup } from '../pipes/filter-by-client-group';
 
 @NgModule({
   declarations: [
@@ -67,7 +69,9 @@ import { SortByOpeningTime } from '../pipes/sort-by-opening-time';
     SortByOrder,
     SortByAlpha,
     SortByDay,
-    SortByOpeningTime
+    SortByOpeningTime,
+    SortBySortPosition,
+    FilterByClientGroup
   ],
   imports: [
     BrowserModule,

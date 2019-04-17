@@ -4,8 +4,14 @@
     <h1 class="section-header__title">Full Listing</h1>
     <p class="section-header__copy">Charities, voluntary groups and government services in {{cityName}}</p>
   </div>
+  <ion-item>
+    <ion-label>Filter for:</ion-label>
+    <ion-select (ionChange)="filterToggled($event)" multiple="true">
+      <ion-option *ngFor="let clientGroupType of clientGroupTypes | sortBySortPosition" [value]="clientGroupType.key" [innerHTML]="clientGroupType.name"></ion-option>
+    </ion-select>
+  </ion-item>
   <ion-list>
-    <ion-item *ngFor="let provider of providers | sortByAlpha" (click)="itemTapped(event, provider)">
+    <ion-item *ngFor="let provider of providers | filterByClientGroup:clientGroupFilter | sortByAlpha" (click)="itemTapped(event, provider)">
       <span [innerHTML]="provider.name"></span>
       <ion-icon name="arrow-forward" item-right></ion-icon>
     </ion-item>
